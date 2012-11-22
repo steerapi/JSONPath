@@ -1,18 +1,17 @@
 Install
 =======
     
-    npm install JSONPath
+    npm install jsonpath-rep
 
 Evaluate
 ========
 
-    var jsonpath = require('JSONPath');
-    jsonpath.eval(obj, path);
+    var jsonpath = require('jsonpath-rep');
+    jsonpath.eval(obj, path, args);
 
-Or more concisely:
+With replacement
 
-	var jsonpath = require('JSONPath').eval;
-	jsonpath(obj, path);
+	  jsonpath.eval(obj, path, args, replaceval);
 
 Examples
 ========
@@ -63,8 +62,8 @@ XPath               | JSONPath               | Result
                     | $..book[-1:]           |
 //book[position()<3]| $..book[0,1]           | the first two books
                     | $..book[:2]            | 
-//book[isbn]        | $..book[?(@.isbn)]     | filter all books with isbn number
-//book[price<10]    | $..book[?(@.price<10)] | filter all books cheapier than 10
+//book[isbn]        | $..book[+(@.isbn)]     | filter all books with isbn number
+//book[price<10]    | $..book[+(@.price<10)] | filter all books cheapier than 10
 //*                 | $..*                   |all Elements in XML document. All members of JSON structure.
 
 

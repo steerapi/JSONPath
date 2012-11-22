@@ -37,14 +37,14 @@ module.exports = testCase({
     // ============================================================================    
     "test $ and @": function(test) {
     // ============================================================================    
-        test.expect(7);
-        test.equal(t1["$"],   jsonpath(t1, "\$")[0]);
-        test.equal(t1["$"],   jsonpath(t1, "$")[0]);
-        test.equal(t1["a$a"], jsonpath(t1, "a$a")[0]);
-        test.equal(t1["@"],   jsonpath(t1, "\@")[0]);
-        test.equal(t1["@"],   jsonpath(t1, "@")[0]);
-        test.equal(t1["$"]["@"], jsonpath(t1, "$.$.@")[0]);
-        test.equal(undefined, jsonpath(t1, "\@")[1]);
+        test.expect(6);
+        test.equal(t1["$"],   jsonpath(t1, "\$"));
+        test.equal(t1["$"],   jsonpath(t1, "$"));
+        test.equal(t1["a$a"], jsonpath(t1, "a$a"));
+        test.equal(t1["@"],   jsonpath(t1, "\@"));
+        test.equal(t1["@"],   jsonpath(t1, "@"));
+        test.equal(t1["$"]["@"], jsonpath(t1, "$.$.@"));
+        // test.equal(undefined, jsonpath(t1, "\@")[1]);
         
         test.done();
     }

@@ -66,7 +66,7 @@ module.exports = testCase({
     "all sub properties, single level": function(test) {
     // ============================================================================    
         test.expect(1);
-        var expected = [json.store.book, json.store.bicycle];
+        var expected = json.store.book.concat(json.store.bicycle);
         var result = jsonpath(json, "$.store.*");
         test.deepEqual(expected, result);
         
@@ -79,7 +79,7 @@ module.exports = testCase({
         test.expect(1);
         var books = json.store.book;
         var expected = [books[0].price, books[1].price, books[2].price, books[3].price, json.store.bicycle.price];
-        var result = jsonpath(json, "$.store..price");
+        var result = jsonpath(json, "$.store..price",{wrap:true});
         test.deepEqual(expected, result);
         
         test.done();
@@ -90,7 +90,7 @@ module.exports = testCase({
     // ============================================================================    
         test.expect(1);
         var books = json.store.book;
-        var expected = [books[2]];
+        var expected = books[2];
         var result = jsonpath(json, "$..book[2]");
         test.deepEqual(expected, result);
         
@@ -102,7 +102,7 @@ module.exports = testCase({
     // ============================================================================    
         test.expect(2);
         var books = json.store.book;
-        var expected = [books[3]];
+        var expected = books[3];
         var result = jsonpath(json, "$..book[(@.length-1)]");
         test.deepEqual(expected, result);
         
@@ -133,7 +133,7 @@ module.exports = testCase({
         test.expect(1);
         var books = json.store.book;
         var expected = [books[2], books[3]];
-        var result = jsonpath(json, "$..book[?(@.isbn)]"); 
+        var result = jsonpath(json, "$..book[+(@.isbn)]"); 
         test.deepEqual(expected, result);
         
         test.done();
@@ -145,7 +145,7 @@ module.exports = testCase({
         test.expect(1);
         var books = json.store.book;
         var expected = [books[0], books[2]];
-        var result = jsonpath(json, "$..book[?(@.price<10)]"); 
+        var result = jsonpath(json, "$..book[+(@.price<10)]"); 
         test.deepEqual(expected, result);
         
         test.done();

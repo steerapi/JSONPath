@@ -1,8 +1,11 @@
 {
-    "author": "Stefan Goessner",
-    "name": "JSONPath",
-    "description": "A JS implementation of JSONPath",
+    "author": "Surat Teerapittayanon",
+    "name": "jsonpath-rep",
+    "description": "A JS implementation of JSONPath with replacement",
     "contributors": [
+        {
+            "name": "Stefan Goessner"
+        },
         {
             "name": "Prof. Gšssner",
             "email": "stefan.goessner@fh-dortmund.de"
@@ -16,10 +19,10 @@
             "email": "mike@brevoort.com"
         }
     ],
-    "version": "0.9.0",
+    "version": "0.0.1",
     "repository": {
         "type": "git",
-        "url": "git://github.com/s3u/JSONPath.git"
+        "url": "git://github.com/steerapi/JSONPath.git"
     },
     "main": "./lib/jsonpath",
     "dependencies": {
